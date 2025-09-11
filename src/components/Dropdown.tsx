@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { ChevronDown, Settings} from 'lucide-react'
+import { ChevronDown, Settings } from 'lucide-react'
 
 interface DropdownOption {
   label: string
@@ -22,7 +22,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   onSettingsClick
 }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState<DropdownOption | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Close dropdown when clicking outside
@@ -38,7 +37,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   }, [])
 
   const handleOptionClick = (option: DropdownOption) => {
-    setSelectedOption(option)
     setIsOpen(false)
     if (option.onClick) {
       option.onClick()
@@ -58,7 +56,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex w-full justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="inline-flex justify-center items-center rounded-md border border-gray-300 bg-white p-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -71,7 +69,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           {/* Header with user email */}
           {userEmail && (
             <div className="px-4 py-3 border-b border-gray-200">

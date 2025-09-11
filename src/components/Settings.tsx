@@ -12,7 +12,7 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState('profile')
   const [darkMode, setDarkMode] = useState(false)
   const [notifications, setNotifications] = useState(true)
-
+ 
   if (!isOpen) return null
 
   const tabs = [
@@ -36,6 +36,8 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               className="rounded-md p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+              title="Close settings"
+              aria-label="Close settings"
             >
               <X className="h-5 w-5" />
             </button>
@@ -77,6 +79,8 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
                         type="email"
                         value={user?.email || ''}
                         disabled
+                        placeholder="Your email"
+                        title="Email"
                         className="w-full rounded-md border border-gray-300 px-3 py-2 bg-gray-50 text-gray-500"
                       />
                     </div>

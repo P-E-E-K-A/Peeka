@@ -27,7 +27,8 @@ export const Login: React.FC = () => {
         setMessage('Check your email for the confirmation link!')
       }
     } catch ( error ) {
-      setMessage('An unexpected error occurred')
+       console.error('Login error:', error)
+       setMessage('An unexpected error occurred')
     } finally {
       setLoading(false)
     }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+
+// Import shared components here
 import { NavBar } from './NavBar'
 import { WelcomeCard } from './WelcomCard'
 import { CardImage } from './CardImage'
@@ -7,74 +9,15 @@ import { SideBar } from './SideBar'
 //Import page components here
 import { ProfileContent } from '../pages/ProfileContent'
 import { AnalyticsContent } from '../pages/AnalyticsContent'
+import { DashboardContent } from '../pages/DashboardContent'
+import { DocumentsContent } from '../pages/DocumentsContent'
+import { CalendarContent } from '../pages/CalendarContent'
+import { NotificationsContent } from '../pages/NotificationsContent'
+import { SettingsContent } from '../pages/SettingsContent'
+import { HelpContent } from '../pages/HelpContent'
 
-// Local dashboard content component
-const DashboardContent = () => (
-  <div className="p-6">
-    <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="text-lg font-semibold mb-2">Welcome Back!</h3>
-        <p className="text-gray-600">Your dashboard is ready to use.</p>
-      </div>
-      <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="text-lg font-semibold mb-2">Quick Stats</h3>
-        <p className="text-gray-600">View your latest metrics here.</p>
-      </div>
-      <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="text-lg font-semibold mb-2">Recent Activity</h3>
-        <p className="text-gray-600">See what's been happening.</p>
-      </div>
-    </div>
-  </div>
-)
 
-// Placeholder components for pages you haven't created yet
-const DocumentsContent = () => (
-  <div className="p-6">
-    <h1 className="text-2xl font-bold mb-4">Documents</h1>
-    <div className="bg-white rounded-lg shadow p-6">
-      <p className="text-gray-600">Documents content will go here.</p>
-    </div>
-  </div>
-)
-
-const CalendarContent = () => (
-  <div className="p-6">
-    <h1 className="text-2xl font-bold mb-4">Calendar</h1>
-    <div className="bg-white rounded-lg shadow p-6">
-      <p className="text-gray-600">Calendar content will go here.</p>
-    </div>
-  </div>
-)
-
-const NotificationsContent = () => (
-  <div className="p-6">
-    <h1 className="text-2xl font-bold mb-4">Notifications</h1>
-    <div className="bg-white rounded-lg shadow p-6">
-      <p className="text-gray-600">Notifications content will go here.</p>
-    </div>
-  </div>
-)
-
-const SettingsContent = () => (
-  <div className="p-6">
-    <h1 className="text-2xl font-bold mb-4">Settings</h1>
-    <div className="bg-white rounded-lg shadow p-6">
-      <p className="text-gray-600">Settings content will go here.</p>
-    </div>
-  </div>
-)
-
-const HelpContent = () => (
-  <div className="p-6">
-    <h1 className="text-2xl font-bold mb-4">Help & Support</h1>
-    <div className="bg-white rounded-lg shadow p-6">
-      <p className="text-gray-600">Help content will go here.</p>
-    </div>
-  </div>
-)
-
+// Page routing component that switches between different page components
 export const Dashboard: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('dashboard')
 

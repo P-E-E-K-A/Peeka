@@ -103,9 +103,7 @@ export function SideBar({ onPageChange }: SidebarProps) {
   return (
     <nav className="w-64 bg-white shadow-lg h-screen flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200">
-        <h1 className="text-2xl font-bold text-blue-600">Peeka</h1>
-      </div>
+
 
       {/* Navigation Items */}
       <div className="flex-1 py-4 overflow-y-auto">

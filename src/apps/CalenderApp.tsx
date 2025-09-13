@@ -46,9 +46,9 @@ export function Calendar() {
   };
 
   return (
-    <div className="w-full h-full bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-xl p-4 flex flex-col text-white">
+    <div className="w-full h-full bg-gray-800/50 backdrop-blur-sm shadow-xl p-4 flex flex-col text-white">
       {/* Header with month navigation */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 ">
         <button
           onClick={prevMonth}
           className="p-2 rounded-full hover:bg-gray-700 transition-colors"
@@ -71,7 +71,7 @@ export function Calendar() {
       </div>
 
       {/* Day headers */}
-      <div className="grid grid-cols-7 gap-1 text-center text-sm font-medium text-gray-400 mb-2">
+      <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-200 mb-2">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
           <div key={day}>{day}</div>
         ))}
@@ -85,7 +85,7 @@ export function Calendar() {
         {days.map((day) => (
           <div
             key={day}
-            className={`h-10 flex items-center justify-center rounded-full transition-colors ${
+            className={`h-auto p-1 flex items-center justify-center rounded-full transition-colors ${
               isToday(day)
                 ? 'bg-purple-500 text-white font-semibold'
                 : 'hover:bg-gray-700 text-gray-200'

@@ -1,6 +1,6 @@
 import { Calendar } from "../apps/CalenderApp";
 import { TodoApp } from "../apps/TodoApp";
-import { HabitTracker } from "../apps/HabitTracker";
+import HabitTracker from "../apps/HabitTracker";
 import { Scheduler } from "../apps/SchedulerApp";
 
 export default function GoalsSummary() {

@@ -36,7 +36,7 @@ const TimeAndDateApp = () => {
   const dateInfo = formatDate(currentTime);
 
   return (
-    <div className="flex items-center justify-center flex-col min-w-1/2">
+    <div className="flex-col min-w-1/2">
       <div className="relative w-full h-96 overflow-hidden shadow-2xl">
         {/* Green Background */}
         <div className="absolute inset-0 bg-green-400">

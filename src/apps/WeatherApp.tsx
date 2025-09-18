@@ -3,7 +3,7 @@ import { Cloud, Sun, CloudRain, Wind } from 'lucide-react';
 const WeatherSection = () => {
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col">
       <div className="relative w-full max-w-2xl h-96 overflow-hidden shadow-2xl">
         {/* Cloudy Sky Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-400 via-gray-500 to-gray-600">

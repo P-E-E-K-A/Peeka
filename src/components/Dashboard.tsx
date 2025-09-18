@@ -45,15 +45,15 @@ export const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">      
+    <div className="min-h-screen ">      
       <main>
-        <div className='flex flex-col'>
+        <div className='flex flex-col bg-custom-dark'>
           <CardImage src="/img/default.jpg" alt="Placeholder Image" />
-          <div className='flex justify-between items-center p-4 bg-white  border-gray-200'>
+          <div className='flex justify-between items-center p-4 bg-neutral-800 border-gray-200'>
             <Logo />
             <NavBar />
           </div>
-          <div className='flex flex-row'>
+          <div className='flex flex-row bg-neutral-800 text-white '>
             <SideBar onPageChange={setCurrentPage} />
             <section className='flex-1 w-full'>
               {renderPage()}

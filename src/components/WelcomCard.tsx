@@ -4,7 +4,7 @@ export function WelcomeCard() {
   const { user } = useAuth();
 
   return (
-    <div className="flex flex-col bg-white w-full">
+    <div className="flex flex-col bg-neutral-800 w-full">
       {user ? (
         <>
           <h2 className="text-xl font-bold ">

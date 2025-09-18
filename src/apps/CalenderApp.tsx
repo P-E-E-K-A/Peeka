@@ -46,7 +46,7 @@ export function Calendar() {
   };
 
   return (
-    <div className="w-full h-full bg-gray-800/50 backdrop-blur-sm shadow-xl p-4 flex flex-col text-white">
+    <div className="w-full h-full bg-neutral-800/50 backdrop-blur-sm shadow-xl p-4 flex flex-col text-white">
       {/* Header with month navigation */}
       <div className="flex items-center justify-between mb-4 ">
         <button

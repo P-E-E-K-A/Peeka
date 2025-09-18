@@ -101,7 +101,7 @@ export function SideBar({ onPageChange }: SidebarProps) {
   ]
 
   return (
-    <nav className="w-64 bg-white shadow-lg h-screen flex flex-col">
+    <nav className="w-64 bg-neutral-800 text-white h-screen flex flex-col">
       {/* Header */}
 
 
@@ -115,7 +115,7 @@ export function SideBar({ onPageChange }: SidebarProps) {
                 className={`w-full flex items-center justify-between px-3 py-3 rounded-lg text-left transition-colors duration-200 group ${
                   activeItem === item.id
                     ? 'bg-blue-100 text-blue-700 shadow-sm'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    : 'text-white hover:bg-gray-100 hover:text-gray-900'
                 }`}
               >
                 <div className="flex items-center space-x-3">
@@ -144,13 +144,13 @@ export function SideBar({ onPageChange }: SidebarProps) {
       </div>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="flex items-center space-x-3 p-3 rounded-lg bg-gray-50">
-          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-            <User className="h-4 w-4 text-blue-600" />
+      <div className="p-4 border-t border-neutral-700">
+        <div className="flex items-center space-x-3 p-3 rounded-lg bg-neutral-800">
+          <div className="w-8 h-8 bg-neutral-800 flex items-center justify-center">
+            <User className="h-4 w-4 text-white" />
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">
+          <div className="flex-1 min-w-0 bg-neutral-800 text-white">
+            <p className="text-sm font-medium  truncate">
                 { UserNameCheck() }
             </p>
             <p className="text-xs text-gray-500 truncate">{user?.email}</p>

@@ -16,12 +16,12 @@ export function DashboardContent() {
         <div>
           <GoalsSummary />
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold mb-2">Quick Stats</h3>
+        <div className="bg-neutral-800 p-6">
+          <h3 className="text-lg font-semibold mb-2 text-white">Quick Stats</h3>
           <p className="text-gray-600">View your latest metrics here.</p>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold mb-2">Recent Activity</h3>
+        <div className="bg-neutral-800 p-6">
+          <h3 className="text-lg font-semibold mb-2 text-white">Recent Activity</h3>
           <p className="text-gray-600">See what's been happening.</p>
         </div>
       </div>

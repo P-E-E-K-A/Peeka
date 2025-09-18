@@ -35,14 +35,14 @@ export const Login: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen flex items-center justify-center bg-neutral-800 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 text-white">
         <div>
           <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full bg-blue-100">
             <LogIn className="h-6 w-6 text-blue-600" />
           </div>
-          <p className='text-center text-4xl font-bold'>Peeka.</p>
-          <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
+          <p className='text-center text-4xl font-bold text-white'>Peeka.</p>
+          <h2 className="mt-6 text-center text-2xl font-extrabold text-white">
             {isSignUp ? 'Create your account' : 'Sign in to your account'}
           </h2>
         </div>

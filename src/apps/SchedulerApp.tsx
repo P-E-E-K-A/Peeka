@@ -202,8 +202,8 @@ export function Scheduler() {
     }
 
     return (
-        <div className="bg-gray-800 text-white p-4 rounded-lg shadow-lg max-w-64 text-xs">
-            <div className="flex items-center justify-between mb-4">
+        <div className="bg-neutral-800 text-white p-4  w-full text-xs">
+            <div className="flex items-center justify-between mb-4 border-b border-gray-300 pb-2">
                 <div className="flex items-center gap-2">
                     <h3 className="text-xl font-bold">Schedule</h3>
                     {syncing && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}

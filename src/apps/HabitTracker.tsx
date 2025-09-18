@@ -202,8 +202,8 @@ export default function SupabaseHabitTracker() {
     }
 
     return (
-        <div className="bg-gray-800 text-white p-4 rounded-lg shadow-lg min-w-80 max-w-md">
-            <div className="flex items-center justify-between mb-6">
+        <div className="bg-neutral-800 text-white p-4 w-full">
+            <div className="flex items-center justify-between mb-6 border-b border-gray-300 pb-2">
                 <div className="flex items-center gap-2">
                     <h3 className="text-xl font-bold text-white">Habits</h3>
                     {syncing && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}
@@ -222,7 +222,7 @@ export default function SupabaseHabitTracker() {
             <section className="overflow-y-auto max-h-64 mb-4">
                 <ul className="space-y-1">
                     {habits.map((habit) => (
-                        <li key={habit.id} className="group flex items-center justify-between bg-gray-700 hover:bg-gray-600 transition-colors duration-200 px-3 py-2 rounded">
+                        <li key={habit.id} className="group flex items-center justify-between bg-neutral-800 hover:bg-neutral-600 transition-colors duration-200 px-3 py-2 rounded">
                             <div className="flex items-center gap-3 flex-1">
                                 <button
                                     onClick={() => toggleHabit(habit.id)}
@@ -264,13 +264,13 @@ export default function SupabaseHabitTracker() {
                     value={newHabit}
                     onChange={(e) => setNewHabit(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Add a new habit..."
-                    className="flex w-60 bg-gray-700 text-white placeholder-gray-400 px-3 py-2 rounded border border-gray-600 focus:border-blue-500 focus:outline-none transition-colors duration-200"
+                    placeholder="+ New"
+                    className="flex w-full bg-neutral-800 text-white placeholder-neutral-400 px-3 py-2  focus:border-blue-500 focus:outline-none transition-colors duration-200"
                 />
                 <button
                     onClick={addHabit}
                     disabled={!newHabit.trim() || syncing}
-                    className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-3 py-2 rounded transition-colors duration-200 flex items-center justify-center"
+                    className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-3 py-2 rounded-full transition-colors duration-200 flex items-center justify-center"
                 >
                     <Plus className="w-4 h-4" />
                 </button>

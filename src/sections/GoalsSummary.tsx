@@ -1,4 +1,4 @@
-
+import { PlaceholderText } from "../components/PlaceholderText";
 import { TodoApp } from "../apps/TodoApp";
 import HabitTracker from "../apps/HabitTracker";
 import { Scheduler } from "../apps/SchedulerApp";
@@ -17,6 +17,9 @@ export default function GoalsSummary() {
                     </div>
                     <div className="flex justify-center">
                         <HabitTracker />
+                    </div>
+                    <div>
+                        <PlaceholderText text="What do you plan to do today? Lets take our time." />
                     </div>
                     <div className="flex justify-center">
                         <Scheduler />

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { X, User, Bell, Shield, Palette, Moon, Sun } from 'lucide-react'
+import { X, User, Bell, Shield, Palette } from 'lucide-react'
 //import { useAuth } from '../contexts/AuthContext'
-import { useDarkMode } from '../contexts/DarkModeContext'
+
 import { SettingsProfile } from '../sections/SettingsProfile'
+import { Notifications } from '../sections/Notifications'
+import { Security } from '../sections/Security'
+import { Appearance } from '../sections/Appearance'
 
 interface SettingsProps {
   isOpen: boolean
@@ -10,9 +13,8 @@ interface SettingsProps {
 }
 
 export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
-  const { darkMode, toggleDarkMode } = useDarkMode()
   const [activeTab, setActiveTab] = useState('profile')
-  const [notifications, setNotifications] = useState(true)
+  
  
   if (!isOpen) return null
 
@@ -72,114 +74,18 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
               )}
 
               {activeTab === 'notifications' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">Notification Preferences</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="text-sm font-medium text-gray-900 dark:text-white">Email Notifications</h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Receive notifications via email</p>
-                      </div>
-                      <button
-                        onClick={() => setNotifications(!notifications)}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                          notifications ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
-                        }`}
-                      >
-                        <span
-                          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                            notifications ? 'translate-x-6' : 'translate-x-1'
-                          }`}
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <Notifications/>
               )}
 
               {activeTab === 'security' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">Security Settings</h3>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-sm font-medium text-gray-900 dark:text-white">Change Password</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Update your password to keep your account secure</p>
-                      <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
-                        Change Password
-                      </button>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-sm font-medium text-gray-900 dark:text-white">Two-Factor Authentication</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Add an extra layer of security to your account</p>
-                      <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                        Enable 2FA
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <Security/>
               )}
 
               {activeTab === 'appearance' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">Appearance Settings</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="text-sm font-medium text-gray-900 dark:text-white">Dark Mode</h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Switch between light and dark themes</p>
-                      </div>
-                      <div className="relative">
-                        <button
-                          onClick={toggleDarkMode}
-                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out ${
-                            darkMode ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
-                          }`}
-                          aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
-                        >
-                          <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
-                              darkMode ? 'translate-x-6' : 'translate-x-1'
-                            }`}
-                          />
-                        </button>
-                        <div className="absolute -right-8 top-1/2 -translate-y-1/2">
-                          {darkMode ? (
-                            <Moon className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                          ) : (
-                            <Sun className="h-4 w-4 text-yellow-500" />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {darkMode 
-                          ? "🌙 Dark mode is currently enabled. Your preference is saved automatically."
-                          : "☀️ Light mode is currently enabled. Your preference is saved automatically."
-                        }
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <Appearance />
               )}
 
-              {/* Save Button */}
-              <div className="mt-8 flex justify-end space-x-3">
-                <button
-                  onClick={onClose}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
-                  Save Changes
-                </button>
-              </div>
+
             </div>
           </div>
         </div>

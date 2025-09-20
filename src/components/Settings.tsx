@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { X, User, Bell, Shield, Palette, Moon, Sun } from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
+//import { useAuth } from '../contexts/AuthContext'
 import { useDarkMode } from '../contexts/DarkModeContext'
+import { SettingsProfile } from '../sections/SettingsProfile'
 
 interface SettingsProps {
   isOpen: boolean
@@ -9,7 +10,6 @@ interface SettingsProps {
 }
 
 export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
-  const { user } = useAuth()
   const { darkMode, toggleDarkMode } = useDarkMode()
   const [activeTab, setActiveTab] = useState('profile')
   const [notifications, setNotifications] = useState(true)
@@ -46,7 +46,7 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
 
           <div className="flex">
             {/* Sidebar */}
-            <div className="w-64 border-r border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+            <div className="w-64 border-r border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 h-150 ">
               <nav className="space-y-1 p-4">
                 {tabs.map((tab) => (
                   <button
@@ -68,47 +68,7 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
             {/* Content */}
             <div className="flex-1 p-6 bg-white dark:bg-gray-900">
               {activeTab === 'profile' && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">Profile Information</h3>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        value={user?.email || ''}
-                        disabled
-                        placeholder="Your email"
-                        title="Email"
-                        className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Enter your full name"
-                        className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Bio
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Tell us about yourself"
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"
-                    />
-                  </div>
-                </div>
+                <SettingsProfile />
               )}
 
               {activeTab === 'notifications' && (

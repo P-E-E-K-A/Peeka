@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { DarkModeProvider } from './contexts/DarkModeContext'
+import { AppearanceProvider } from './contexts/appearance-context'
 import { Login } from './components/Login'
 import { Dashboard } from './components/Dashboard'
 
@@ -24,16 +25,41 @@ const AppContent: React.FC = () => {
   return user ? <Dashboard /> : <Login />
 }
 
-// Main App component that wraps everything with both providers
+// Main App component that wraps everything with all providers
 function App() {
+  // Ensure initial theme setup (this runs once on mount)
+  useEffect(() => {
+    // Initialize CSS variables for primary color
+    if (typeof window !== 'undefined') {
+      try {
+        const savedAccent = localStorage.getItem('accentColor') || 'blue';
+        const colorMap: Record<string, string> = {
+          blue: '#2563eb',
+          green: '#16a34a',
+          purple: '#7c3aed',
+          red: '#dc2626',
+          orange: '#ea580c'
+        };
+        const color = colorMap[savedAccent as keyof typeof colorMap];
+        if (color) {
+          document.documentElement.style.setProperty('--primary', color);
+        }
+      } catch (error) {
+        console.warn('Failed to initialize appearance settings:', error);
+      }
+    }
+  }, []);
+
   return (
-    <DarkModeProvider>
-      <AuthProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-          <AppContent />
-        </div>
-      </AuthProvider>
-    </DarkModeProvider>
+    <AppearanceProvider>
+      <DarkModeProvider>
+        <AuthProvider>
+          <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            <AppContent />
+          </div>
+        </AuthProvider>
+      </DarkModeProvider>
+    </AppearanceProvider>
   )
 }
 

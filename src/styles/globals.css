@@ -1,0 +1,186 @@
+
+/* CSS Variables for Appearance System */
+:root {
+  /* Core colors */
+  --primary: 221 83% 53%; /* Blue 500 */
+  --primary-foreground: 210 40% 98%; /* White */
+  
+  /* Semantic colors */
+  --card: 0 0% 100%; /* White */
+  --card-foreground: 222.2 84% 4.9%; /* Gray 900 */
+  --popover: 0 0% 100%; /* White */
+  --popover-foreground: 222.2 84% 4.9%; /* Gray 900 */
+  --primary: 221 83% 53%; /* Blue 500 */
+  --primary-foreground: 210 40% 98%; /* White */
+  --secondary: 210 40% 96%; /* Gray 100 */
+  --secondary-foreground: 222.2 84% 4.9%; /* Gray 900 */
+  --muted: 210 40% 96%; /* Gray 100 */
+  --muted-foreground: 215.4 16.3% 46.9%; /* Gray 500 */
+  --accent: 210 40% 96%; /* Gray 100 */
+  --accent-foreground: 222.2 84% 4.9%; /* Gray 900 */
+  --destructive: 0 84.2% 60.2%; /* Red 500 */
+  --destructive-foreground: 210 40% 98%; /* White */
+  --border: 214.3 31.8% 91.4%; /* Gray 200 */
+  --input: 214.3 31.8% 91.4%; /* Gray 200 */
+  --ring: 222.2 84% 4.9%; /* Gray 900 */
+  
+  /* Border radius */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --card: 222.2 84% 4.9%; /* Gray 900 */
+  --card-foreground: 210 40% 98%; /* White */
+  --popover: 222.2 84% 4.9%; /* Gray 900 */
+  --popover-foreground: 210 40% 98%; /* White */
+  --primary: 221 83% 53%; /* Blue 500 */
+  --primary-foreground: 210 40% 98%; /* White */
+  --secondary: 217.2 32.6% 17.5%; /* Gray 700 */
+  --secondary-foreground: 210 40% 98%; /* White */
+  --muted: 217.2 32.6% 17.5%; /* Gray 700 */
+  --muted-foreground: 215 20.2% 65.1%; /* Gray 400 */
+  --accent: 217.2 32.6% 17.5%; /* Gray 700 */
+  --accent-foreground: 210 40% 98%; /* White */
+  --destructive: 0 62.8% 30.6%; /* Red 600 */
+  --destructive-foreground: 210 40% 98%; /* White */
+  --border: 217.2 32.6% 17.5%; /* Gray 700 */
+  --input: 217.2 32.6% 17.5%; /* Gray 700 */
+  --ring: 212.7 26.8% 83.9%; /* Gray 100 */
+}
+
+/* Dynamic accent colors - updated by AppearanceContext */
+:root[data-accent="green"] {
+  --primary: 142 71% 45%; /* Green 500 */
+}
+:root[data-accent="purple"] {
+  --primary: 263 70% 50%; /* Purple 500 */
+}
+:root[data-accent="red"] {
+  --primary: 0 84.2% 60.2%; /* Red 500 */
+}
+:root[data-accent="orange"] {
+  --primary: 25 95% 53%; /* Orange 500 */
+}
+
+.dark[data-accent="green"] {
+  --primary: 142 71% 45%; /* Green 500 */
+}
+.dark[data-accent="purple"] {
+  --primary: 263 70% 50%; /* Purple 500 */
+}
+.dark[data-accent="red"] {
+  --primary: 0 84.2% 60.2%; /* Red 500 */
+}
+.dark[data-accent="orange"] {
+  --primary: 25 95% 53%; /* Orange 500 */
+}
+
+/* Utility classes for appearance system */
+.bg-primary { 
+  background-color: hsl(var(--primary)) !important; 
+}
+.text-primary { 
+  color: hsl(var(--primary)) !important; 
+}
+.border-primary { 
+  border-color: hsl(var(--primary)) !important; 
+}
+.ring-primary { 
+  --tw-ring-color: hsl(var(--primary)) !important; 
+}
+
+/* Foreground variants */
+.text-primary-foreground { 
+  color: hsl(var(--primary-foreground)) !important; 
+}
+.bg-primary-foreground { 
+  background-color: hsl(var(--primary-foreground)) !important; 
+}
+
+/* Card system (theme adaptive) */
+.bg-card { 
+  background-color: hsl(var(--card)); 
+}
+.text-card { 
+  color: hsl(var(--card-foreground)); 
+}
+.border-card { 
+  border-color: hsl(var(--border)); 
+}
+
+/* Hover and focus states */
+.hover\:bg-primary:hover { 
+  background-color: hsl(var(--primary)) !important; 
+}
+.focus\:ring-primary:focus { 
+  --tw-ring-color: hsl(var(--primary)) !important; 
+}
+
+/* Line clamp utilities (fixed warning) */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 1; /* Standard property */
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 2; /* Standard property */
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary), 0.8);
+}
+
+/* Focus rings for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Selection colors */
+::selection {
+  background-color: hsl(var(--primary), 0.2);
+  color: hsl(var(--primary-foreground));
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary), 0.8);
+}

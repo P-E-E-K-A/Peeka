@@ -6,16 +6,15 @@ import { CardImage } from './CardImage'
 import { SideBar } from './SideBar'
 import { Logo } from './Logo'
 
-//Import page components here
+// Import page components here
 import { ProfileContent } from '../pages/ProfileContent'
 import { AnalyticsContent } from '../pages/AnalyticsContent'
 import { DashboardContent } from '../pages/DashboardContent'
 import { DocumentsContent } from '../pages/DocumentsContent'
 import { CalendarContent } from '../pages/CalendarContent'
 import { NotificationsContent } from '../pages/NotificationsContent'
-import { SettingsContent } from '../pages/SettingsContent'
+import { SettingsContent } from '../pages/SettingsContent' // Make sure this path is correct
 import { HelpContent } from '../pages/HelpContent'
-
 
 // Page routing component that switches between different page components
 export const Dashboard: React.FC = () => {

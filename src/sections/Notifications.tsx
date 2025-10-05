@@ -27,7 +27,7 @@ export function Notifications() {
   
   const [isLoading, setIsLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
-  const [editing, setEditing] = useState(false);
+  const [ , setEditing] = useState(false);
   const [settings, setSettings] = useState<NotificationSettings>({
     emailNotifications: true,
     pushNotifications: true,

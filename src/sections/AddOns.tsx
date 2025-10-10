@@ -151,7 +151,7 @@ export const AddOns: React.FC = () => {
                     </h4>
                     <span className="text-xs px-2 py-1 rounded bg-blue-100 dark:bg-blue-900 
                                    text-blue-800 dark:text-blue-200">
-                      {widget.metadata.provider}
+                      {widget.metadata?.provider || 'Unknown'}
                     </span>
                   </div>
                   <a

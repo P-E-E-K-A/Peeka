@@ -1,14 +1,64 @@
-//Components import
-import { WelcomeCard } from "../components/WelcomCard";
+import { useState, useCallback, useEffect } from 'react';
+import Masonry from 'react-masonry-css';
+import { WelcomeCard } from '../components/WelcomCard';
+import { CustomButton } from '../components/CustomButton';
+import GoalsSummary from '../sections/GoalsSummary';
+import { pluginManager } from '../indifycore/PluginManager';
+import type { Widget } from '../indifycore/types';
+import IframeWidget from '../components/widgets/IframeWidget';
+import { useAuth } from '../contexts/AuthContext';
 
-// Tests
-import { CustomButton } from "../components/CustomButton";
+// CSS for masonry layout
+const masonryStyles = `
+  .my-masonry-grid {
+    display: flex;
+    margin-left: -16px; /* gutter size */
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    padding-left: 16px; /* gutter size */
+    background-clip: padding-box;
+  }
+  .my-masonry-grid_column > div {
+    margin-bottom: 16px;
+  }
+`;
 
-// Section imports
-import GoalsSummary from "../sections/GoalsSummary";
-
-// Local dashboard content component
 export function DashboardContent() {
+  const [importedWidgets, setImportedWidgets] = useState<Widget[]>([]);
+  const { user } = useAuth();
+
+  const loadWidgets = useCallback(async () => {
+    if (!user) return;
+
+    try {
+      const widgets = await pluginManager.loadWidgets(user.id);
+      setImportedWidgets(widgets.filter((w) => w.enabled));
+    } catch (error) {
+      console.error('Failed to load widgets:', error);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    loadWidgets();
+  }, [loadWidgets]);
+
+  const handleRemoveWidget = useCallback(async (widgetId: string) => {
+    try {
+      await pluginManager.removeWidget(widgetId);
+      await loadWidgets();
+    } catch (error) {
+      console.error('Failed to remove widget:', error);
+    }
+  }, [loadWidgets]);
+
+  // Define responsive breakpoints for masonry columns
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
+
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">
@@ -18,6 +68,24 @@ export function DashboardContent() {
         <div>
           <GoalsSummary />
         </div>
+
+        {/* Imported Widgets Section */}
+        {importedWidgets.length > 0 && (
+          <div>
+            <h2 className="text-xl font-semibold mb-4 text-white">Imported Widgets</h2>
+            <style>{masonryStyles}</style>
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column"
+            >
+              {importedWidgets.map((widget) => (
+                <IframeWidget key={widget.id} widget={widget} onRemove={handleRemoveWidget} />
+              ))}
+            </Masonry>
+          </div>
+        )}
+
         <div className="bg-neutral-800 p-6 rounded-lg border border-gray-700">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <div>

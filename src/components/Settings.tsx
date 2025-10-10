@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { X, User, Bell, Shield, Palette } from 'lucide-react'
+import { X, User, Bell, Shield, Palette, Package } from 'lucide-react'
 //import { useAuth } from '../contexts/AuthContext'
+
 
 import { SettingsProfile } from '../sections/SettingsProfile'
 import { Notifications } from '../sections/Notifications'
 import { Security } from '../sections/Security'
 import { Appearance } from '../sections/Appearance'
+import { AddOns } from '../sections/AddOns'
 
 interface SettingsProps {
   isOpen: boolean
@@ -23,6 +25,7 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
     { id: 'notifications', label: 'Notifications', icon: <Bell className="h-4 w-4" /> },
     { id: 'security', label: 'Security', icon: <Shield className="h-4 w-4" /> },
     { id: 'appearance', label: 'Appearance', icon: <Palette className="h-4 w-4" /> },
+    { id: 'addons', label: 'Add-ons', icon:  <Package className='h-4 w-4'/> },
   ]
 
   return (
@@ -89,6 +92,10 @@ export const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }) => {
 
               {activeTab === 'appearance' && (
                 <Appearance />
+              )}
+
+              {activeTab === 'addons' && (
+                <AddOns />
               )}
             </div>
           </div>

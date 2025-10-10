@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { SettingsProfile } from '../sections/SettingsProfile';
 import { Appearance } from '../sections/Appearance';
-import { User, Sun, Shield, Bell } from 'lucide-react';
+import { User, Sun, Shield, Bell, PackageXIcon } from 'lucide-react';
+import {AddOns} from '../sections/AddOns';
 
 const settingsSections = [
   { id: 'profile', label: 'Profile', icon: User, description: 'Personal information' },
   { id: 'appearance', label: 'Appearance', icon: Sun, description: 'Display preferences' },
   { id: 'security', label: 'Security', icon: Shield, description: 'Account security' },
   { id: 'notifications', label: 'Notifications', icon: Bell, description: 'Alert preferences' },
+  { id: 'addons', label:'Add-ons', icon: PackageXIcon, description: 'Manage add-ons' },
 ];
 
 export const SettingsContent: React.FC = () => { // Make sure this is exported!
@@ -37,6 +39,8 @@ export const SettingsContent: React.FC = () => { // Make sure this is exported!
             </div>
           </div>
         );
+      case 'addons':
+        return <AddOns />;
       default:
         return <SettingsProfile />;
     }

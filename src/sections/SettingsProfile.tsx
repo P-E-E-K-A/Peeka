@@ -1,7 +1,7 @@
 import { useAuth } from "../contexts/AuthContext";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { AddOns } from "./AddOns";
+
 
 // import { useAppearance } from "../contexts/appearance-context";
 import { 
@@ -14,7 +14,6 @@ import {
   Upload,
   Eye,
   Check,
-  Package
 } from 'lucide-react';
 import { CustomButton } from "../components/CustomButton";
 
@@ -572,21 +571,6 @@ export function SettingsProfile() {
             </div>
           </div>
 
-          {/* Addons Section */}
-          <div className="bg-card rounded-xl p-6 border border-border">
-            <div className="flex items-center gap-3 mb-6">
-              <div className={`p-2 bg-primary/10 dark:bg-primary/20 rounded-xl`}>
-                <Package className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Addons</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Enhance your experience with additional features
-                </p>
-              </div>
-            </div>
-            <AddOns />
-          </div>
         </div>
       )}
     </div>
